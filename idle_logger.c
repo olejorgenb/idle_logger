@@ -8,7 +8,7 @@
 /* in seconds */
 
 #define POLL_INTERVAL   60
-#define FLUSH_INTERVAL  60*10
+#define FLUSH_INTERVAL  60*1
 
 #define BUFFER_SIZE     FLUSH_INTERVAL / POLL_INTERVAL
 
