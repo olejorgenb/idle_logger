@@ -26,7 +26,20 @@ void flush_log() {
 	fclose(file);
 }
 
+void config() {
+  char* path = getenv("BRONNER_IDLE_LOGGER_PATH");
+	if(path) {
+    /* if ( access( path, W_OK ) == -1 ) { */
+    /*   fprintf(stderr, "%s doesn't exist or is unwritable. (specified in the env var BRONNER_IDLE_LOGGER_PATH)", path); */
+    /*   exit(1); */
+    /* } */
+    log_file_path = path;
+  }
+}
+
+
 int main() {
+	config();
 	int counter = 0;
 	int event;
 	int error;
