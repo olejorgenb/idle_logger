@@ -14,7 +14,9 @@
 
 static const char *log_file_path = "/home/ole/log/idle_log.log";
 
-static unsigned long buffer[BUFFER_SIZE];
+/* The buffer contains a sequence of timestamp,idle_time. Ie. even indices contains the timestamp
+   and odd contains the idle_time. */
+static unsigned long buffer[BUFFER_SIZE*2];
 
 void flush_log() {
 	FILE *file = fopen(log_file_path, "a");
