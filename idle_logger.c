@@ -10,7 +10,7 @@
 #define POLL_INTERVAL   60
 #define FLUSH_INTERVAL  60*1
 
-#define BUFFER_SIZE     FLUSH_INTERVAL / POLL_INTERVAL
+#define BUFFER_SIZE    FLUSH_INTERVAL / POLL_INTERVAL
 
 static const char *log_file_path = "/home/ole/log/idle_log.log";
 
@@ -27,14 +27,14 @@ void flush_log() {
 }
 
 void config() {
-  char* path = getenv("BRONNER_IDLE_LOGGER_PATH");
+	char* path = getenv("BRONNER_IDLE_LOGGER_PATH");
 	if(path) {
-    /* if ( access( path, W_OK ) == -1 ) { */
-    /*   fprintf(stderr, "%s doesn't exist or is unwritable. (specified in the env var BRONNER_IDLE_LOGGER_PATH)", path); */
-    /*   exit(1); */
-    /* } */
-    log_file_path = path;
-  }
+	/* if ( access( path, W_OK ) == -1 ) { */
+	/*	 fprintf(stderr, "%s doesn't exist or is unwritable. (specified in the env var BRONNER_IDLE_LOGGER_PATH)", path); */
+	/*	 exit(1); */
+	/* } */
+	log_file_path = path;
+	}
 }
 
 
@@ -44,6 +44,9 @@ int main() {
 	int event;
 	int error;
 	Display *dpy = XOpenDisplay(NULL);
+	if(!dpy) {
+		fprintf(stderr, "Could not open display");
+	}
 	Drawable whatever = DefaultRootWindow(dpy);
 	XScreenSaverInfo *info = NULL;
 
